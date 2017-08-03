@@ -1,0 +1,9 @@
+# read data from 1/2/2007 to 2/2/2007
+hpc<-read.csv2('household_power_consumption.txt', skip = 66636, nrows = 2880, stringsAsFactors=FALSE,
+                col.names = c('Date','Time','Global_active_power','Global_reactive_power','Voltage','Global_intensity','Sub_metering_1','Sub_metering_2','Sub_metering_3'))
+hpc$Global_active_power<-as.numeric(hpc$Global_active_power)
+
+# plot histogram of global active power
+png('plot1.png', width = 480, height = 480, units = 'px')
+hist(hpc$Global_active_power, col = 'red', main = 'Global Active Power', xlab = 'Global Active Power (kilowatts)')
+dev.off()
